@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('register', [UserController::class, 'register'])->name('user.register');
+Route::post('register', [UserController::class, 'post_register']);
+
+Route::get('login', [UserController::class, 'login'])->name('user.login');
+Route::post('login', [UserController::class, 'post_login']);
+
+Route::get('home', [HomeController::class, 'home'])->name('user.home');
+Route::get('logout', [UserController::class, 'logout'])->name('user.logout');
